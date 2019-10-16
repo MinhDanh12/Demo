@@ -1,0 +1,122 @@
+﻿<Window x:Class="WpfAppDemo.MainHomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:WpfAppDemo.ViewModels"
+        xmlns:views="clr-namespace:WpfAppDemo.Views"
+        xmlns:local="clr-namespace:WpfAppDemo"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        Title="MainHomeWindow" Height="600" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    <Window.Resources>
+        <DataTemplate x:Name="productView" DataType="{x:Type viewmodels:ProductViewModel}">
+            <views:ProductView/>
+        </DataTemplate>
+        <DataTemplate x:Name="orderView" DataType="{x:Type viewmodels:OrderViewModel}">
+            <views:OrderView/>
+        </DataTemplate>
+        <DataTemplate x:Name="addProductView" DataType="{x:Type viewmodels:AddProductViewModel}">
+            <views:AddProductView/>
+        </DataTemplate>
+        <DataTemplate x:Name="editProductView" DataType="{x:Type viewmodels:EditProductViewModel}">
+            <views:EditProductView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Background="#FFEEEEEE" MouseDown="Grid_MouseDown">
+        <StackPanel VerticalAlignment="Top">
+            <Grid Background="#FF0069C0" Height="10"/>
+            <Grid Margin="5">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Design App WPF" VerticalAlignment="Center" FontSize="20" FontFamily="Champagne &amp; Limousines" Margin="20 0"/>
+                    <Button Name="btnFb" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Click="BtnFb_Click">
+                        <Hyperlink x:Name="lnkGoogle" NavigateUri="http://www.facebook.com"
+                             RequestNavigate="Hyperlink_RequestNavigate" >
+                            <materialDesign:PackIcon Kind="FacebookBox"/>
+                        </Hyperlink>
+                    </Button>
+                    <Button Name="btntw" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray">
+                        <Hyperlink x:Name="btnTwitter" NavigateUri="https://twitter.com"
+                             RequestNavigate="Hyperlink_RequestNavigate" >
+                            <materialDesign:PackIcon Kind="TwitterBox"/>
+                        </Hyperlink>
+                    </Button>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray">
+                        <Hyperlink x:Name="btnGit" NavigateUri="https://github.com"
+                             RequestNavigate="Hyperlink_RequestNavigate" >
+                            <materialDesign:PackIcon Kind="GithubBox"/>
+                        </Hyperlink>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray">
+                        <materialDesign:PackIcon Kind="BellOutline"/>
+                    </Button>
+                    <Button Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Margin="0 0 10 0">
+                        <materialDesign:PackIcon Kind="Settings"/>
+                    </Button>
+                    <Button x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Click="ButtonFechar_Click">
+                        <materialDesign:PackIcon Kind="Power"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <!--<Grid Margin="250 55 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="68*"/>
+                <ColumnDefinition Width="61*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="GridPrincipal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="387,272,21,273"/>
+        </Grid>-->
+        <ContentControl Name="mainContent" HorizontalAlignment="Left" Margin="281,69,0,0" VerticalAlignment="Top" Height="521" Width="719">
+            
+        </ContentControl>
+
+        <Grid Width="250" HorizontalAlignment="Left" Background="#FF222222">
+            <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
+                <Grid x:Name="GridCursor" Margin="0 100 0 0" Background="#FF0069C0" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+            </materialDesign:TransitioningContent>
+            <ListView x:Name="ListViewMenu" Margin="0 100" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Home" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FoodForkDrink" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Drinks" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FormatListBulleted" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Product" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cart" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Order" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cash" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Company" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="AccountStar" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="User" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </Grid>
+
+    </Grid>
+</Window>

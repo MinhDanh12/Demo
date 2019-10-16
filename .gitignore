@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+FirstApp/bin/
+FirstApp/obj/
+ApiAppDemo/obj/
+WpfAppDemo/obj/
+WpfAppDemo/bin/
